@@ -17,30 +17,40 @@ object lionel {
 	method avanzar() {
 		position = game.at((game.width() - 1).min(position.x() + 1), position.y()) 
 	}
-	
-	method taquito(){
-		self.validarPosicion()
-		bocha.moverConTaco()
-		
 
+	method patearBocha() {
+		self.validarSiEstaLaPelotaEnLionel()
+		bocha.position(bocha.posicionDeLaPelotaPateada())
 	}
 
-	method validarPosicion(){
-		if (!self.mismaPosicionPelota()){
-	
-			self.error("No estoy donde esta la pelota bobo")
+	method validarSiEstaLaPelotaEnLionel() {
+		if(not self.estaLaPelotaEnLionel())	{
+			self.error("No está la pelota en Lionel.")
 		}
-	
-		
 	}
 
-	method mismaPosicionPelota() = position== bocha.position()
+	method estaLaPelotaEnLionel() {
+		return bocha.position() == self.position()
+	}
+
+	method taquito(){
+		self.validarSiEstaLaPelotaEnLionel()
+		bocha.moverConTaco()
+	}
 }
 
 
 object pelota {
 	const property image="pelota.png"
-	var property position = game.at(5,5)	
+	var property position = game.at(5,5)
+
+	method posicionDeLaPelotaPateada() {
+		return game.at(self.posicionEnXDeLaPelotaPateada(), position.y())
+	}
+
+	method posicionEnXDeLaPelotaPateada() {
+		return (game.width() - 1).min(position.x() + 3)
+	}
 
 	method moverConTaco(){
 		position = game.at(0.max(position.x() - 2), position.y()) 
