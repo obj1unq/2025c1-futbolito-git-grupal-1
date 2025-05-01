@@ -1,0 +1,7 @@
+import objetos.*
+
+describe "Primeros Test" {
+  test "Probando funcionalidades de la pelota." {
+	assert.throwsException({lionel.patearBocha()})
+  }
+}
