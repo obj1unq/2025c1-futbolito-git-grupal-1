@@ -11,6 +11,11 @@ program futbolito{
 	keyboard.enter().onPressDo({game.say(lionel, "Vamos Argentina!")})
 	keyboard.left().onPressDo({lionel.retroceder()})
 	keyboard.right().onPressDo({lionel.avanzar()})
+	
+	//taquito
+	keyboard.t().onPressDo({lionel.taquito()})
+
+	
 
 	game.start()
 
