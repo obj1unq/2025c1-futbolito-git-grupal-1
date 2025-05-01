@@ -32,6 +32,11 @@ object lionel {
 	method estaLaPelotaEnLionel() {
 		return bocha.position() == self.position()
 	}
+
+	method taquito(){
+		self.validarSiEstaLaPelotaEnLionel()
+		bocha.moverConTaco()
+	}
 }
 
 
@@ -45,6 +50,10 @@ object pelota {
 
 	method posicionEnXDeLaPelotaPateada() {
 		return (game.width() - 1).min(position.x() + 3)
+	}
+
+	method moverConTaco(){
+		position = game.at(0.max(position.x() - 2), position.y()) 
 	}
 }
 
